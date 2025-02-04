@@ -1,23 +1,14 @@
 <template>
   <div id="depoimentos-clientes" class="depoimentos-clientes">
     <h2>Depoimentos de Clientes</h2>
-    <div class="depoimentos-clientes-info">
-      <div class="depoimentos-clientes-info-img">
-        <img src="../../public/img/People.png" alt="" />
-      </div>
-      <div class="depoimentos-clientes-info-texto">
-        <div class="depoimentos-clientes-info-texto-1">
-          <h3>João Pedro</h3>
-          <p>
-            Adoro este produto! Facilitou muito minha vida e me ajudou a economizar tempo. Recomendo para todos!
-          </p>
-        </div>
-
-        <div class="depoimentos-clientes-info-texto-2">
-          <h3>Elisa Thomaz</h3>
-          <p>
-            Desde que comecei a usar este serviço, minha produtividade aumentou significativamente. A interface é intuitiva e o suporte é excelente.
-          </p>
+    <div class="carousel">
+      <div class="carousel-item" v-for="(depoimento, index) in depoimentos" :key="index">
+        <div class="depoimento-card">
+          <img :src="depoimento.imagem" :alt="`Depoimento de ${depoimento.nome}`" class="cliente-foto" />
+          <div class="depoimento-texto">
+            <h3>{{ depoimento.nome }}</h3>
+            <p>{{ depoimento.texto }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -26,58 +17,99 @@
 
 <script>
 export default {
-  name: "DepoimentosClientes.vue",
+  name: "DepoimentosClientes",
+  data() {
+    return {
+      depoimentos: [
+        {
+          nome: "João Pedro",
+          texto: "Adoro este produto! Facilitou muito minha vida e me ajudou a economizar tempo. Recomendo para todos!",
+          imagem: "https://github.com/Jose6348/Images_Projects/blob/main/Cafe_page/pexels-ann-h-45017-11022644.jpg?raw=true"
+        },
+        {
+          nome: "Elisa Thomaz",
+          texto: "Desde que comecei a usar este serviço, minha produtividade aumentou significativamente. A interface é intuitiva e o suporte é excelente.",
+          imagem: "https://github.com/Jose6348/Images_Projects/blob/main/Cafe_page/pexels-ann-h-45017-11022644.jpg?raw=true"
+        },
+        {
+          nome: "Elisa Thomaz",
+          texto: "Desde que comecei a usar este serviço, minha produtividade aumentou significativamente. A interface é intuitiva e o suporte é excelente.",
+          imagem: "https://github.com/Jose6348/Images_Projects/blob/main/Cafe_page/pexels-ann-h-45017-11022644.jpg?raw=true"
+        },
+        {
+          nome: "Elisa Thomaz",
+          texto: "Desde que comecei a usar este serviço, minha produtividade aumentou significativamente. A interface é intuitiva e o suporte é excelente.",
+          imagem: "https://github.com/Jose6348/Images_Projects/blob/main/Cafe_page/pexels-ann-h-45017-11022644.jpg?raw=true"
+        },
+        {
+          nome: "Elisa Thomaz",
+          texto: "Desde que comecei a usar este serviço, minha produtividade aumentou significativamente. A interface é intuitiva e o suporte é excelente.",
+          imagem: "https://github.com/Jose6348/Images_Projects/blob/main/Cafe_page/pexels-ann-h-45017-11022644.jpg?raw=true"
+        },
+        {
+          nome: "Elisa Thomaz",
+          texto: "Desde que comecei a usar este serviço, minha produtividade aumentou significativamente. A interface é intuitiva e o suporte é excelente.",
+          imagem: "https://github.com/Jose6348/Images_Projects/blob/main/Cafe_page/pexels-ann-h-45017-11022644.jpg?raw=true"
+        },
+        // Adicione mais depoimentos aqui conforme necessário
+      ]
+    };
+  }
 };
 </script>
 
 <style scoped>
 .depoimentos-clientes {
-  display: flex;
-  flex-direction: column;
   padding: 4rem;
+  text-align: center;
 }
 
 .depoimentos-clientes h2 {
   font-family: "Cormorant Garamond", serif;
-  font-size: 5rem;
+  font-size: 4rem;
   color: #1d2440;
-  text-align: center;
   margin-bottom: 2rem;
 }
 
-.depoimentos-clientes-info {
+.carousel {
   display: flex;
-  background-color: #151a2f;
-  padding: 2rem;
+  overflow-x: auto;
+  gap: 2rem;
+  padding: 2rem 0;
 }
 
-.depoimentos-clientes-info-texto {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.carousel-item {
+  flex: 0 0 auto;
+}
 
-  width: 48%;
-  color: #fff;
+.depoimento-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 300px;
   text-align: center;
-  padding: 2rem;
-  margin-left: 3rem;
+  margin: 0 auto;
 }
 
-.depoimentos-clientes-info-texto-1 h3,
-.depoimentos-clientes-info-texto-2 h3 {
+.cliente-foto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.depoimento-texto h3 {
   font-family: "Cormorant Garamond", serif;
-  font-size: 3rem;
-  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #1d2440;
+  margin-bottom: 1rem;
 }
 
-.depoimentos-clientes-info-texto-1 p {
-  margin-bottom: 3rem;
-}
-
-.depoimentos-clientes-info-texto-1 p,
-.depoimentos-clientes-info-texto-2 p {
+.depoimento-texto p {
   font-family: "Noto Sans", sans-serif;
-  font-size: 1.2rem;
-  padding: 0 1rem;
+  font-size: 1rem;
+  color: #333;
 }
 </style>
